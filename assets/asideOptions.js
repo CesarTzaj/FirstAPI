@@ -13,11 +13,12 @@ async function getCategories (urlApi, wrapper ){
     categories.map(category =>{
       let categoryContainer = document.createElement('div');
       let checkBox = document.createElement('input');
-      let categoryDescription = document.createElement('p');
+      let categoryDescription = document.createElement('label');
       // classes
       categoryContainer.classList.add('input-group' );
       checkBox.classList.add('form-check-input', 'mt-3');
-      checkBox.setAttribute('type', 'checkbox', 'value','');
+      checkBox.setAttribute('type', 'checkbox');
+      checkBox.setAttribute( 'value',category.id)
       categoryDescription.classList.add('ms-2', 'mt-2','fs-5');
 
       categoryDescription.innerText = category.name;
@@ -32,3 +33,9 @@ async function getCategories (urlApi, wrapper ){
 getCategories(APICategory, categoriesInput);
 
 getCategories(APICategory, dropdown_menu);
+
+let inputs=  []
+inputs.push( document.getElementsByClassName('form-check-input'))
+inputs.map(Element => console.log(Element.value))
+let input = document.querySelector('.input')
+console.log(input.value, 'a');
