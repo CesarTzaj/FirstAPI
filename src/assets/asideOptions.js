@@ -25,6 +25,7 @@ async function getCategories (urlApi, wrapper ){
       wrapper.append(categoryContainer);
     })
   } catch (error) {
+    alert(error)
     console.log(error)
   }
 }

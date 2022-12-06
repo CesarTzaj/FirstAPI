@@ -48,7 +48,7 @@ async function getData(urlApi, wrapper, row_per_page, page) {
       image.setAttribute('src', producto.images)
       btnCart.innerText = 'Agregar a cart'
       price.innerText = `Q ${producto.price}`;
-      category.innerText = `${producto.category.name}  ${producto.id}`
+      category.innerText = `${producto.category.name}  `
       title.innerText = producto.title;
       description.innerText = producto.description;
       PriceCart.append(btnCart, price)
@@ -60,6 +60,7 @@ async function getData(urlApi, wrapper, row_per_page, page) {
     })
     // section.innerText = b
   } catch (error) {
+   console.log(error);
     alert(error )
   }
 };
@@ -111,7 +112,8 @@ return button
   next.append(nextA);
   pagination.append(next)
 } catch (error) {
-  // alert(error)
+  console.log(error);//
+   alert(error)
   console.log(error);
 }
 })(API,section,rows_per_page);
