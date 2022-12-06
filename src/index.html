@@ -12,13 +12,13 @@
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg  bg-light">
+		<nav class="navbar navbar-expand-lg bg-light">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="#"><img class="rounded logo" src="https://i.pinimg.com/originals/a3/2b/19/a32b19c33d4a36e69069493a0353e531.png" alt=""></a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-				<div class="collapse navbar-collapse d-flex justify-content-end" id="navbarSupportedContent">
+				<div class="collapse navbar-collapse  justify-content-end " id="navbarSupportedContent">
 					<form class="d-flex" role="search">
 						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
 						<button class="btn btn-outline-success" type="submit">Search</button>
@@ -45,12 +45,12 @@
 			</div>
 		</nav>
 	</header>
-	<main class="container-fluid text-center">
+	<main class="container-fluid text-center ">
 		<section class="container-fluid" >
 			<section class="row ">
-				<aside class="col ms-2 ">
+				<aside class="col ms-2 d-none d-lg-block ">
 					<h1 class=" fs-4 text-start mt-5">Categorias</h1>
-					<div class=" row categories mt-4" >
+					<div class="row categories mt-4" >
 						<!-- <div class="  input-group " >
 							<input class="form-check-input mt-3" type="checkbox" value="" aria-label="Radio button for following text input">
 							<p class=" ms-2 mt-2 fs-5">preuba</p>
@@ -59,8 +59,8 @@
 					
 				</aside>
 
-				<div class="col-10 asdfasd">
-					<div class="row cardContainer d-flex justify-content-between">
+				<div class="col-12 col-lg-10 ">
+					<div class="row cardContainer d-flex justify-content-center justify-content-md-between">
 						<!-- 
 				<div class="card" style="width: 18rem;">
 						<img src="..." class="card-img-top" alt="...">
@@ -80,29 +80,67 @@
 					</div>
 				</div>
 			</section>
-			<nav aria-label="..." class="d-flex justify-content-center">
-				<ul class="pagination">
-	<!-- 
-					<li class="page-item ">
-						<span class="page-link">Previous</span>
-					</li>
-					<li class="page-item active"><a class="page-link" href="#">1</a></li>
-					<li class="page-item " aria-current="page">
-						<span class="page-link">2</span>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li> -->
-	
-				</ul>
-			</nav>
+
+			
+				<nav aria-label="..." class=" mt-4 d-md-flex justify-content-center">
+					<ul class=" pagination">
+		<!-- 
+						<li class="page-item ">
+							<span class="page-link">Previous</span>
+						</li>
+						<li class="page-item active"><a class="page-link" href="#">1</a></li>
+						<li class="page-item " aria-current="page">
+							<span class="page-link">2</span>
+						</li>
+						<li class="page-item"><a class="page-link" href="#">3</a></li>
+						<li class="page-item">
+							<a class="page-link" href="#">Next</a>
+						</li> -->
+		
+					</ul>
+				</nav>
+
 
 		</section>
 
 	</main>
 	<footer>
-
+		<nav class="navbar navbar-expand-lg bg-light">
+			<div class="container-fluid">
+				<a class="navbar-brand" href="#">Navbar</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+						<li class="nav-item">
+							<a class="nav-link active" aria-current="page" href="#">Home</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Link</a>
+						</li>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+								Dropdown
+							</a>
+							<ul class="dropdown-menu">
+								<li><a class="dropdown-item" href="#">Action</a></li>
+								<li><a class="dropdown-item" href="#">Another action</a></li>
+								<li><hr class="dropdown-divider"></li>
+								<li><a class="dropdown-item" href="#">Something else here</a></li>
+							</ul>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link disabled">Disabled</a>
+						</li>
+					</ul>
+					<form class="d-flex" role="search">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</form>
+				</div>
+			</div>
+		</nav>
 	</footer>
 	<script src="./assets/main.js"></script>
 	<script src="./assets/asideOptions.js"></script>

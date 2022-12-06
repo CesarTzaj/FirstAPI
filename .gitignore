@@ -1,2 +1,5 @@
+$ git status
 .vscode
 package.json
+package-lock.json
+/ node_modules

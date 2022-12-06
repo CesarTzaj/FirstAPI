@@ -32,7 +32,7 @@ async function getData(urlApi, wrapper, row_per_page, page) {
       const price = document.createElement('span')
       // html clases
 
-      card.classList.add('card', 'col-10', 'col-md-4', 'col-lg-3', 'mt-5', 'text-start');
+      card.classList.add('card', 'col-12', 'col-md-4', 'col-lg-3', 'mt-5', 'text-start');
       image.classList.add('card-img-top');
       image.setAttribute('id', 'img')
       card_body.classList.add('card-body');
