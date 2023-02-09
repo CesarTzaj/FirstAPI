@@ -1,41 +1,84 @@
-const APICategory = 'https://api.escuelajs.co/api/v1/categories';
+//import { home } from "./controller";
 
-let categoriesInput = document.querySelector('.categories')
-let dropdown_menu = document.querySelector('.dropdown-menu')
-async function fetchData(urlApi) {
-  const response = await fetch(urlApi);
-  return response.json()
+
+async function home() {
+  setUpPagination(`${API}/products`, displaySection, rows_per_page);
+  getData(`${API}/products`, section, rows_per_page, current_page);
 }
 
-async function getCategories (urlApi, wrapper ){
+async function fetchDataCategory(urlApi) {
+  console.log(`${urlApi}/categories`);
+  const response = await fetch(`${urlApi}/categories`);
+  return response.json();
+}
+async function getByCategory(url) {
+  await getData(url, section, rows_per_page, current_page);
+  await setUpPagination(url, displaySection, rows_per_page);
+}
+
+async function getByCategoryInput(id) {
+  const inputs = document.querySelectorAll("input");
+  inputs.forEach((input) => {
+    input.checked = false;
+    if (id == input.id) {      
+      input.checked = true;
+    }
+  });
+
+}
+
+async function getCategories(urlApi, wrapper) {
   try {
-    let categories = await fetchData(urlApi);
-    categories.map(category =>{
-      let categoryContainer = document.createElement('div');
-      let checkBox = document.createElement('input');
-      let categoryDescription = document.createElement('label');
+    let results = [];
+    let categories = await fetchDataCategory(urlApi);
+
+    categories.map((category) => {
+      let categoryContainer = document.createElement("div");
+      let checkBox = document.createElement("input");
+      let categoryDescription = document.createElement("label");
+      checkBox.addEventListener("click", async () => {
+        await getByCategoryInput(category.id);
+        await getByCategory(`${API}/categories/${category.id}/products`);
+      });
       // classes
-      categoryContainer.classList.add('input-group' );
-      checkBox.classList.add('form-check-input', 'mt-3');
-      checkBox.setAttribute('type', 'checkbox');
-      checkBox.setAttribute( 'value',category.id)
-      categoryDescription.classList.add('ms-2', 'mt-2','fs-5');
+      categoryContainer.classList.add("input-group");
+      checkBox.classList.add("form-check-input", "mt-3");
+      checkBox.setAttribute("type", "checkbox");
+      checkBox.setAttribute("value", category.id);
+
+      checkBox.setAttribute("id", category.id);
+      categoryDescription.setAttribute("for", category.id);
+      categoryDescription.classList.add("ms-2", "mt-2", "fs-5");
 
       categoryDescription.innerText = category.name;
-      categoryContainer.append(checkBox,categoryDescription)
-      wrapper.append(categoryContainer);
-    })
+      categoryContainer.append(checkBox, categoryDescription);
+      results.push(categoryContainer);
+    });
+    wrapper.append(...results);
   } catch (error) {
-    alert(error)
-    console.log(error)
+    alert(error);
+    console.log(error);
   }
 }
-getCategories(APICategory, categoriesInput);
+async function searchByKeword(event) {
 
-getCategories(APICategory, dropdown_menu);
+  if (searchInput.value.length > 2) {
+    console.log();
+    let keyword = searchInput.value;
+    let url = `${API}/products?title=${keyword}`;
+    setTimeout(async () => {
+      await getData(url, section, rows_per_page, current_page);
+      await setUpPagination(url, displaySection, rows_per_page);
+    }, 500);
+    if (event.key == "Enter") {
+      event.preventDefault();
+    }
+  } else {
+    home();
+  }
+}
 
-let inputs=  []
-inputs.push( document.getElementsByClassName('form-check-input'))
-inputs.map(Element => console.log(Element.value))
-let input = document.querySelector('.input')
-console.log(input.value, 'a');
+
+
+
+

@@ -29,7 +29,7 @@ footer{
     background-color: aqua;
 }
 .dropdown-menu .input-group input{
-    display: none;
+    /* display: none; */
 }
 .dropdown-menu .input-group{
     height: 35px;
