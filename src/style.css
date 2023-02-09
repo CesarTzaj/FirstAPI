@@ -1,0 +1,36 @@
+.cardContainer{
+    display: flex;
+    justify-content: space-evenly;
+}
+.cardContainer .card{
+    max-width: 290px ;
+}
+
+#img{
+    margin-inline: auto;
+     /* width: 90%; */
+     border-radius: 8px;
+    }
+.logo{
+    width: 90px;
+   
+}
+@media  (max-width: 500px) {
+    #img{
+        margin-inline: auto;
+         width: 100%;
+         border-radius: 8px;
+        }
+}
+.DescriptionSize{
+    font-size: 14px;
+}
+footer{
+    background-color: aqua;
+}
+.dropdown-menu .input-group input{
+    /* display: none; */
+}
+.dropdown-menu .input-group{
+    height: 35px;
+}
