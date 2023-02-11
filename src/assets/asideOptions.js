@@ -7,7 +7,6 @@ async function home() {
 }
 
 async function fetchDataCategory(urlApi) {
-  console.log(`${urlApi}/categories`);
   const response = await fetch(`${urlApi}/categories`);
   return response.json();
 }
@@ -20,7 +19,8 @@ async function getByCategoryInput(id) {
   const inputs = document.querySelectorAll("input");
   inputs.forEach((input) => {
     input.checked = false;
-    if (id == input.id) {      
+    if (id == input.id) {    
+      console.log(input);  
       input.checked = true;
     }
   });
@@ -33,37 +33,32 @@ async function getCategories(urlApi, wrapper) {
     let categories = await fetchDataCategory(urlApi);
 
     categories.map((category) => {
-      let categoryContainer = document.createElement("div");
-      let checkBox = document.createElement("input");
-      let categoryDescription = document.createElement("label");
+      
+      let checkBox = createElement("input",[],{
+        type: 'checkbox',
+        id: category.id
+      });
+      let categoryDescription = createElement("label",[category.name],{for: category.id});
+      let categoryContainer = createElement("div",[checkBox, categoryDescription]);
       checkBox.addEventListener("click", async () => {
         await getByCategoryInput(category.id);
         await getByCategory(`${API}/categories/${category.id}/products`);
       });
       // classes
       categoryContainer.classList.add("input-group");
-      checkBox.classList.add("form-check-input", "mt-3");
-      checkBox.setAttribute("type", "checkbox");
-      checkBox.setAttribute("value", category.id);
-
-      checkBox.setAttribute("id", category.id);
-      categoryDescription.setAttribute("for", category.id);
+      checkBox.classList.add("form-check-input", "mt-3"); 
       categoryDescription.classList.add("ms-2", "mt-2", "fs-5");
 
-      categoryDescription.innerText = category.name;
-      categoryContainer.append(checkBox, categoryDescription);
       results.push(categoryContainer);
     });
     wrapper.append(...results);
   } catch (error) {
-    alert(error);
     console.log(error);
   }
 }
 async function searchByKeword(event) {
 
   if (searchInput.value.length > 2) {
-    console.log();
     let keyword = searchInput.value;
     let url = `${API}/products?title=${keyword}`;
     setTimeout(async () => {

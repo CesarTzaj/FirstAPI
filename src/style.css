@@ -1,36 +1,239 @@
-.cardContainer{
-    display: flex;
-    justify-content: space-evenly;
-}
-.cardContainer .card{
-    max-width: 290px ;
+:root {
+  --blue: #0071dc;
+  --active-blue: #004f9a;
+  --withe: #ffffff;
+  --font-medium: 20px;
+  --gray-hover: 	#C0C0C0;
+  --font-bold: 900;
 }
 
-#img{
+body header {
+  background-color: var(--blue);
+}
+
+.cardContainer .card {
+  max-width: 290px;
+}
+
+#img {
+  margin-inline: auto;
+  /* width: 90%; */
+  border-radius: 8px;
+}
+
+.logo {
+  width: 90px;
+}
+
+.log-in {
+  display: block;
+  position: relative;
+  margin: auto;
+  padding: 10px 15px;
+  border-radius: 20px;
+  z-index: 3;
+}
+
+.log-in:hover,
+.log-in:focus {
+  background-color: var(--active-blue);
+}
+
+.nav-item:hover,
+.nav-item:focus {
+  display: block;
+  margin: auto;
+  padding: 0px 15px;
+  border-radius: 20px;
+  background-color: var(--active-blue);
+}
+
+.log-in img {
+  border-radius: 2px;
+  width: 25px;
+}
+
+.accountOption {
+  display: none;
+}
+
+.log-in .show .accountOption {
+  display: block;
+  position: absolute;
+  width: 10rem;
+  height: 9rem;
+  top: 50px;
+  border-radius: 10px;
+  background-color: var(--withe);
+  font-size: var(--font-medium);
+  z-index: 3;
+}
+
+.accountOption article:last-child {
+  text-align: center;
+  width: 130px;
+  padding: 5px 0;
+  background-color: var(--blue);
+  border-radius: 20px;
+}
+
+.accountOption article:hover {
+  transform: scale(1.2);
+}
+
+.BgFilter.show {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  background-color: #004f9a;
+  z-index: 2;
+  opacity: 0.5;
+}
+
+.search-form {
+  margin: auto;
+  width: 50%;
+  max-width: 500px;
+}
+main{
+  position: relative;
+}
+.material-symbols-outlined.close{
+  font-weight: 900;
+  font-size: 40px;
+  color: red;
+}
+
+.log-in-page{
+  display: none;
+}
+.log-in-page.show{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 60%;
+  max-width: 500px;
+  border-radius: 10px;
+  background-color: var(--withe);
+  position: absolute;
+  left: 30%;
+  top: 0;
+  z-index: 3;
+}
+.log-in-page div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  right: 10px;
+  top: 10px;
+  
+  border: var(--active-blue) solid 1px;
+  border-radius: 50%;
+}
+.log-in-page div:hover{
+  transform: scale(1.2);
+  border: var(--gray-hover) solid 1px;
+  background-color: var(--gray-hover);
+}
+.log-in-page-form{
+  display: grid;
+  gap: 20px;
+  grid-template-columns: 130px  300px;
+  grid-auto-rows: 40px;
+  width: 90%;
+  margin-top: 70px;
+  margin-bottom: 30px ;
+  font-size: var(--font-medium);
+  /* background-color: #ffffff; */
+}
+.log-in-page-form input{
+  border-radius: 10px;
+  outline: none;
+  padding-inline: 10px;
+}
+.log-in-page-form .loginBtn{
+  grid-area: 3 / 1 / 3 / 3 ;
+}
+.log-in-page-form .sigup{
+  grid-area: 8 / 1 / 8 / 3 ;
+}
+.log-in-page-form picture{
+  display: grid;
+  position: relative;
+  grid-area: 5 / 2 / 8 / 3 ;
+  justify-content: center;
+  width: 50%;
+  border: #004f9a 2px dotted;
+
+}
+.log-in-page-form picture .profile{
+  position: absolute;
+  font-size: 100px;
+  color: var(--active-blue);
+  top: calc(50% - 55px);
+  left: calc(50% - 50px);
+  z-index: 2;
+}
+.log-in-page-form picture p{
+  font-size: var(--font-medium);
+  font-weight: var(--font-bold);
+  position: absolute;
+  bottom: 0;
+  color: var(--blue);
+  
+}
+.log-in-page-form picture .cancel{
+  position: absolute;
+  font-size: 40px;
+  color: var(--active-blue);
+  right: 10px;
+  z-index: 2;
+}
+.log-in-page-form picture button{
+  position: absolute;
+  bottom: calc(50%);
+  right: -90px;
+  z-index: 1;
+}
+.log-in-page-form picture input{
+  width: 100%;
+  height: 100%;
+  background-color: #004f9a;
+  opacity: 0;
+  z-index: 2;
+}
+.log-in-page-form button{
+  display: grid;
+  margin: 0 auto;
+  width: 50%;
+  border-radius: 10px;  
+}
+@media (max-width: 800px) {
+  #img {
     margin-inline: auto;
-     /* width: 90%; */
-     border-radius: 8px;
-    }
-.logo{
-    width: 90px;
-   
+    width: 100%;
+    border-radius: 8px;
+  }
+
+  .log-in {
+    display: block;
+    max-width: 150px;
+    margin: auto 0;
+    padding: 10px 15px;
+    border-radius: 20px;
+  }
+
 }
-@media  (max-width: 500px) {
-    #img{
-        margin-inline: auto;
-         width: 100%;
-         border-radius: 8px;
-        }
+
+.DescriptionSize {
+  font-size: 14px;
 }
-.DescriptionSize{
-    font-size: 14px;
-}
-footer{
-    background-color: aqua;
-}
-.dropdown-menu .input-group input{
-    /* display: none; */
-}
-.dropdown-menu .input-group{
-    height: 35px;
+
+
+.dropdown-menu .input-group {
+  height: 35px;
 }

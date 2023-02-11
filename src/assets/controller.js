@@ -1,4 +1,4 @@
-home()
+// home()
 searchInput.addEventListener("keydown", searchByKeword, false);
 
 getCategories(API, categoriesInput);
