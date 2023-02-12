@@ -110,7 +110,6 @@ main{
 .log-in-page.show{
   display: flex;
   justify-content: center;
-  align-items: center;
   position: relative;
   width: 60%;
   max-width: 500px;
@@ -148,9 +147,9 @@ main{
   margin-top: 70px;
   margin-bottom: 30px ;
   font-size: var(--font-medium);
-  /* background-color: #ffffff; */
 }
 .log-in-page-form input{
+  width: 100%;
   border-radius: 10px;
   outline: none;
   padding-inline: 10px;
@@ -212,6 +211,17 @@ main{
   width: 50%;
   border-radius: 10px;  
 }
+@media (max-width: 800px){
+  .log-in-page.show{
+    display: grid;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    margin-inline: auto;
+    max-width: 500px;
+    /* top: -200px; */
+  }
+}
 @media (max-width: 800px) {
   #img {
     margin-inline: auto;
@@ -226,7 +236,45 @@ main{
     padding: 10px 15px;
     border-radius: 20px;
   }
+  .log-in-page.show{
+    display: grid;
+    width: 100%;
+    left:unset;
+    max-width: 500px;
+    margin-inline:  auto;
+    /* top: -200px; */
+  }
+  .log-in-page-form{
+    grid-template-columns: 280px;
+    grid-auto-rows: 40px;
+    grid-auto-flow: row;
+  }
 
+  .log-in-page-form .loginBtn{
+    width: 50%;
+    max-width: 320px;
+    grid-area: 5 / 1 / 5 / 2 ;
+  }
+  .log-in-page-form .sigup{
+    width: 80%;
+    max-width: 320px;
+    grid-area: 14 / 1 / 14 / 2 ;
+  }
+  .log-in-page-form picture{
+    display: grid;
+    position: relative;
+    grid-area: 10 / 1 / 14 / 2 ;
+    margin-inline: auto ;
+    width: 50%;
+    border: #004f9a 2px dotted;
+  
+  }
+  .log-in-page-form input{
+    width: 90%;
+    border-radius: 10px;
+    outline: none;
+    padding-inline: 10px;
+  }
 }
 
 .DescriptionSize {

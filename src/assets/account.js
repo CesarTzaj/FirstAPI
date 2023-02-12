@@ -22,15 +22,18 @@ function logIn() {
 
 
   logInPage.appendChild(form);
-  let  closeLogin = document.querySelector('.material-symbols-outlined.close')
+  let  closeLogin = document.querySelector('.material-symbols-outlined.close');
   closeLogin.addEventListener('click', ()=>{
     logInPage.classList.remove("show")
-  })
+  });
 }
 
 function singUp() {
   logInPage.innerHTML = '';
 
+  let div = createElement('div');
+  div.append(icon('close', 'close'));
+  let closeIcon = div;
   const iconProfile = icon('profile', 'account_circle');
   const iconClose = icon('cancel', 'cancel' );
   const uploadProfile =createElement('input', [], {
@@ -66,11 +69,16 @@ function singUp() {
   const picture = createElement('picture', [iconProfile, iconClose,uploadProfile,browseFile]);
   const btnSingUp = btn('sigup', 'Log in');
   const form = createElement('form',
-   [UName, inputName, email, inputEmail,
+   [closeIcon,UName, inputName, email, inputEmail,
    password, inputPassword, confPassword, inputconfPassword,
   avatar, picture, btnSingUp]);
   form.classList.add('log-in-page-form')
   logInPage.append(form);
+
+  let  closeLogin = document.querySelector('.material-symbols-outlined.close');
+  closeLogin.addEventListener('click', ()=>{
+    logInPage.classList.remove("show")
+  });
 }
 
 function loginPopUP() {
