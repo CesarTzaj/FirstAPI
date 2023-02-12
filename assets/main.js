@@ -1,21 +1,31 @@
-const API = "https://api.escuelajs.co/api/v1";
-// variables for html
-const section = document.querySelector(".cardContainer");
-const displaySection = document.querySelector(".pagination");
-const errorMessage = document.getElementById("error");
-const searchInput = document.querySelector(".searchInput");
-const homePage = document.querySelector(".home");
-const logo = document.querySelector(".logo");
-let categoriesInput;
 
-let dropdown_menu = document.querySelector(".dropdown-menu");
-// import { getData} from './asideOptions'
+function icon(className,  type) {
+  const span = document.createElement('span');
+  span.classList.add('material-symbols-outlined', className);
+  span.append(type)
+  return span;
+}
 
-if (window.outerWidth < 768) {
-  console.log("hola");
-  categoriesInput = document.querySelector(".dropdown-menu");
-} else {
-  categoriesInput = document.querySelector(".categories");
+function btn(className, content) {
+  let btn = document.createElement('button');
+  btn.setAttribute('type', 'button');
+  btn.append(content)
+  btn.classList.add(className)
+  return btn; 
+}
+
+function createElement(tag, content=[], atributes='' ) {
+  const tagName = document.createElement(tag);
+  content.map(cont =>{
+    tagName.append(cont)
+  })
+  Object.entries(atributes).map(atribute =>{
+    tagName.setAttribute(atribute[0],atribute[1]);
+  });
+  if (tag ==='label') {
+    console.log(tagName);
+  }
+  return tagName;
 }
 
 let current_page = 1;
@@ -40,50 +50,35 @@ async function getData(urlApi, wrapper, row_per_page, page) {
   try {
     let productList = await fetchData(urlApi);
     let itemPerPage = productList.slice(start, end);
+    const cards = []
     itemPerPage.map((producto) => {
-      // Html tags
-      const card = document.createElement("div");
-      const image = document.createElement("img");
-      const card_body = document.createElement("div");
-      const title = document.createElement("h5");
-      const description = document.createElement("p");
-      const category = document.createElement("span");
-      const PriceCart = document.createElement("div");
-      const btnCart = document.createElement("button");
-      const price = document.createElement("span");
+      const image = createElement("img",[],{ 
+        id: 'img',
+        src: producto.images
+       });
+      const title = createElement("h5",[producto.title]);
+      const description = createElement("p" ,[producto.description]);
+      const category = createElement("span", [producto.category.name]);
+      
+      const btnCart = createElement("button",['Agregar a cart'], {type: 'button'});
+      const price = createElement("span", ['Q ',producto.price ]);
+      const PriceCart = createElement("div",[btnCart, price]);
+      const card_body = createElement("div", [title, description]);
+      const card = createElement("div",[image, card_body, category, PriceCart]);
       // html clases
-
-      card.classList.add(
-        "card",
-        "col-12",
-        "col-md-4",
-        "col-lg-3",
-        "mt-5",
-        "text-start"
-      );
+      card.classList.add("card","col-12","col-md-4","col-lg-3","mt-5","text-start" );
       image.classList.add("card-img-top");
-      image.setAttribute("id", "img");
       card_body.classList.add("card-body");
       title.classList.add("card-title");
       description.classList.add("card-text", "DescriptionSize", "fw-normal");
       category.classList.add("fw-bold");
       PriceCart.classList.add("row", "mb-2");
       btnCart.classList.add("btn", "btn-outline-success", "col-7", "ms-2");
-      price.classList.add("col-3", "offset-1", "fs-6");
-
-      // building html card
-      btnCart.setAttribute("type", "button");
-      image.setAttribute("src", producto.images);
-      btnCart.innerText = "Agregar a cart";
-      price.innerText = `Q ${producto.price}`;
-      category.innerText = `${producto.category.name}  `;
-      title.innerText = producto.title;
-      description.innerText = producto.description;
-      PriceCart.append(btnCart, price);
-      card_body.append(title, description);
-      card.append(image, card_body, category, PriceCart);
-      wrapper.append(card);
+      price.classList.add("col-3", "offset-1", "fs-6");  
+      cards.push(card)
+    
     });
+    wrapper.append(...cards);
   } catch (error) {
     console.log(error);
     (errorMessage.innerText = error), error.status;
@@ -91,7 +86,7 @@ async function getData(urlApi, wrapper, row_per_page, page) {
 }
 
 function paginationButton(page, urlApi) {
-  let button = document.createElement("li");
+  let button = createElement("li");
   if (current_page == page) {
     button.classList.add("active");
   }
@@ -112,32 +107,28 @@ async function setUpPagination(urlApi, wrapper, row_per_page) {
     const products = await fetchData(urlApi);
     const pages = Math.ceil(products.length / row_per_page);
     if (pages > 1) {
-      let previous = document.createElement("li");
-    let previousSpan = document.createElement("span");
+    
+    let previousSpan = createElement("span",["Previous"]);
+    let previous = createElement("li",[previousSpan]);
     previous.classList.add("page-item");
     previousSpan.classList.add("page-link");
-    previousSpan.innerText = "Previous";
-    previous.append(previousSpan);
     wrapper.append(previous);
-
     let paginationNumber = [];
     for (let index = 1; index <= pages; index++) {
       const page = paginationButton(index, urlApi);
-      const pageA = document.createElement("a");
+      const pageA = createElement("a", [index]);
       page.classList.add("page-item");
       pageA.classList.add("page-link");
-      pageA.innerText = index;
       page.append(pageA);
       paginationNumber.push(page)
       
     }
     wrapper.append(...paginationNumber);
-    const next = document.createElement("li");
-    const nextA = document.createElement("a");
+    
+    const nextA = createElement("a",[['Next']]);
+    const next = createElement("li",[nextA]);
     next.classList.add("page-item");
     nextA.classList.add("page-link");
-    nextA.innerText = "Next";
-    next.append(nextA);
     wrapper.append(next);
     }
     
