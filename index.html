@@ -11,6 +11,8 @@
 	<link rel="stylesheet" href="./style.css" />
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
 		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
 	<meta name="description" content="Encuentra los prodctos mas invadores en el mercado en un solo click" />
 	<link rel="stylesheet"
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
@@ -36,24 +38,17 @@
 
 					</form>
 					<ul class="navbar-nav mb-2">
-						<li class="nav-item me-2">
+						<li class="nav-item mt-3 me-2">
 							<a class="nav-link active home" aria-current="page" href="#">Home</a>
 						</li>
 
-						<li class="nav-item dropdown d-lg-none me-2">
-							<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-								aria-expanded="false">
-								categories
-							</a>
-							<div class="dropdown-menu pb-4">
+						<li class="nav-item dropdown    d-lg-none ">
+							<a class="nav-link  home" aria-current="page" href="#">categories</a>
+							<div class="dropdown-menu ">
 							</div>
 						</li>
-						<li class="log-in ms-2">
+						<li class="log-in">
 							<section id="log-in">
-								<img
-									src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSegCgK5aWTTuv_K5TPd10DcJxphcBTBct6R170EamgcCOcYs7LGKVy7ybRc-MCwOcHljg&usqp=CAU"
-									alt="" />
-								My Account
 							</section>
 							<section class="logInOption"></section>
 						</li>
@@ -67,42 +62,37 @@
 	</header>
 	<main class="container-fluid text-center">
 		<span id="error"></span>
-		<section class="log-in-page show">
-			<form id="password" type="password" class="log-in-page-form">
-				<div><span class="material-symbols-outlined close">close</span></div><label
-					for="username">Username</label><input id="username" type="email" placeholder="john_doe@comcast.com"><label
-					for="password">Password</label><input>
-					<button type="button" class="loginBtn">Log in</button> 
-			</form>
+
+		<section class="log-in-page ">
 		</section>
+
 		<section class="container-fluid">
 			<section class="row">
-				<aside class="col ms-2 d-none d-lg-block">
-					<h1 class="fs-4 text-start mt-5">Categorias</h1>
-					<div class="row categories mt-4">
-
-					</div>
+				<aside class="col-2 ms-2 d-none d-lg-block
+				categories">
 				</aside>
 
-				<div class="col-12 col-lg-10">
-					<div class="row cardContainer d-flex justify-content-center justify-content-md-between">
-
-					</div>
+				<div class="col-12 col-lg-9" id="cardContainer">
 				</div>
 			</section>
+			<nav aria-label="..." id="pagination" class=" mt-4 d-md-flex justify-content-center">
 
-			<nav aria-label="..." class="mt-4 d-md-flex justify-content-center">
-				<ul class="pagination">
-
-				</ul>
 			</nav>
 		</section>
+
+		<section class="productDetail">
+			
+		</section>
+
 	</main>
 	<script src="./assets/variable.js"></script>
+
+
 	<script src="./assets/main.js"></script>
 	<script src="./assets/asideOptions.js"></script>
 	<script src="./assets/controller.js"></script>
 	<script src="./assets/account.js"></script>
+	<script src="./assets/productDetail.js"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
 		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
 		crossorigin="anonymous"></script>

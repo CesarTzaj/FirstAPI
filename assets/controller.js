@@ -1,7 +1,8 @@
-// home()
+home()
 searchInput.addEventListener("keydown", searchByKeword, false);
 
-getCategories(API, categoriesInput);
-homePage.addEventListener('click', home, false);
-logo.addEventListener('click', home, false)
+homePage.addEventListener('click', ()=>{
+  home()
+});
+logo.addEventListener('click', home)
 //export {home}

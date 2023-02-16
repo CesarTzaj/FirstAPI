@@ -1,15 +1,18 @@
-//import { home } from "./controller";
-
-
 async function home() {
+  console.log('asdfas');
   setUpPagination(`${API}/products`, displaySection, rows_per_page);
   getData(`${API}/products`, section, rows_per_page, current_page);
+  getCategories(API, categoriesInput);
+  
+  categoriesInput.classList.remove('dropdown-item')
+  productDetail.innerHTML = '';
 }
 
 async function fetchDataCategory(urlApi) {
   const response = await fetch(`${urlApi}/categories`);
   return response.json();
 }
+
 async function getByCategory(url) {
   await getData(url, section, rows_per_page, current_page);
   await setUpPagination(url, displaySection, rows_per_page);
@@ -28,10 +31,11 @@ async function getByCategoryInput(id) {
 }
 
 async function getCategories(urlApi, wrapper) {
+  wrapper.innerHTML =""
   try {
     let results = [];
     let categories = await fetchDataCategory(urlApi);
-
+    let title = createElement('h1',['Categorias'],{},['fs-4', 'text-start', 'mt-lg-5'])
     categories.map((category) => {
       
       let checkBox = createElement("input",[],{
@@ -51,20 +55,19 @@ async function getCategories(urlApi, wrapper) {
 
       results.push(categoryContainer);
     });
-    wrapper.append(...results);
+    wrapper.append(title,...results);
   } catch (error) {
     console.log(error);
   }
 }
+
 async function searchByKeword(event) {
 
   if (searchInput.value.length > 2) {
     let keyword = searchInput.value;
-    let url = `${API}/products?title=${keyword}`;
-    setTimeout(async () => {
+    let url = `${API}/products?title=${keyword}`;    
       await getData(url, section, rows_per_page, current_page);
-      await setUpPagination(url, displaySection, rows_per_page);
-    }, 500);
+      await setUpPagination(url, displaySection, rows_per_page);    
     if (event.key == "Enter") {
       event.preventDefault();
     }
